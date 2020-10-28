@@ -1,7 +1,7 @@
 # 2020-10-28-수요일
   
 ### Enhanced for문에서 데이터 삭제
-[Iterator 예제](https://github.com/yoojeebee/api/collection/iterator/EnhancedForDemo.java)
+[Enhanced for문 예제](https://github.com/Yoojeebee/java_class/blob/master/api/src/collection/iterator/EnhancedForDemo.java)
 ```java
 ArrayList<String> names = new ArrayList<String>();
 names.add("이순신");
