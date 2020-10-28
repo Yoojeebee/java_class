@@ -45,6 +45,6 @@ ResultSet
 	boolean next()		// 조회할 행(row, recode)이 남아있으면 true 반환
 	xxxgetXXX(String name)	// 현재 행에서 지정된 이름의 값을 가져온다
 ```
-[Iterator 예제1](https://github.com/Yoojeebee/java_class/blob/master/api/src/collection/iterator/IteratorDemo1.java)
+[Iterator 예제1](src/collection/iterator/IteratorDemo1.java)
 <br/>
-[Iterator 예제2](https://github.com/Yoojeebee/java_class/blob/master/api/src/collection/iterator/IteratorDemo2.java)
+[Iterator 예제2](src/collection/iterator/IteratorDemo2.java)
