@@ -31,5 +31,9 @@ public class OrderRepository {
 		// 모든 주문정보가 저장된 ArrayList<Order>객체를 반환한다.
 		return database;
 	}
+
+	{
+		System.out.println("OrderRepository 생성!");
+	}
 	
 }

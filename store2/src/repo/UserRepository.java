@@ -103,4 +103,8 @@ public class UserRepository {
 			}
 		}
 	}
+
+	{
+		System.out.println("UserRepository 생성!");
+	}
 }

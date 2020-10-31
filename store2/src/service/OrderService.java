@@ -16,7 +16,7 @@ public class OrderService {
 	private UserRepository userRepository = new UserRepository();
 	// 주문정보 추가/조회 기능 제공
 	private OrderRepository orderRepository = new OrderRepository();
-	
+
 	/**
 	 * 지정된 사용자의 모든 주문내역을 반환한다.
 	 * @param userId 사용자 아이디

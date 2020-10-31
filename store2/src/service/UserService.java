@@ -9,8 +9,7 @@ public class UserService {
 	
 	// 사용자의 정보를 저장/관리하는 객체
 	private UserRepository userRepository = new UserRepository();
-	
-	
+
 	/**
 	 * 모든 가입자 정보를 반환한다.
 	 * @return User의 ArrayList 객체

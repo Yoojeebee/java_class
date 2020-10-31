@@ -5,26 +5,29 @@ import java.util.Scanner;
 
 import service.BookService;
 import service.OrderService;
+import service.Service;
 import service.UserService;
 import vo.Book;
 import vo.Order;
 import vo.User;
 
-public class StoreApp {
+public class
+StoreApp {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		UserService userService = new UserService();
 		BookService bookService = new BookService();
 		OrderService orderService = new OrderService();
-		
+
 		while(true) {
 			System.out.println("========================================================");
 			System.out.println("1.도서\t\t 2.주문 \t 3.회원 \t 0.종료");
 			System.out.println("========================================================");			
+
 			System.out.print("메뉴선택 > ");
 			int mainMenu = sc.nextInt();
-			
+
 			if(mainMenu == 1) {
 				System.out.println("[도서관리]");
 				System.out.println("========================================================================");
