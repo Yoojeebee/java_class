@@ -8,6 +8,7 @@ import repo.Repository;
 import repo.UserRepository;
 import vo.Book;
 import vo.Order;
+import vo.User;
 
 public class OrderService {
 
@@ -52,16 +53,26 @@ public class OrderService {
 		// 5. OrderRepository의 insertOrder(Order) 메소드를 호출해서
 		//    3번에서 생성한 Order 객체를 저장한다.
 
-		String userName = repository.getUserRepository().getUserById(userId).getName();
-		Book book = repository.getBookRepository().getBookByNo(bookNo);
-		if(book != null) {
-			String bookName = book.getTitle();
-			int orderPrice = book.getPrice();
-			int orderAmount = book.getStock();
-			Order order = new Order(userId, userName, bookNo, bookName, orderPrice, orderAmount);
-			Service.getInstance().getBookService().updateBookStock(bookNo, book.getStock() - amount);
+		String userName = null;
+		ArrayList<User> users = repository.getUserRepository().getAllUsers();
+		for(User user : users) {
+			if(userId.equals(user.getId())) {
+				userName = userId;
+			}
+		}
+		if(userName != null) {
+			Book book = repository.getBookRepository().getBookByNo(bookNo);
+			if (book != null) {
+				String bookName = book.getTitle();
+				int orderPrice = book.getPrice();
+				int orderAmount = book.getStock();
+				Order order = new Order(userId, userName, bookNo, bookName, orderPrice, orderAmount);
+				Service.getInstance().getBookService().updateBookStock(bookNo, book.getStock() - amount);
+			} else {
+				System.out.println("잘못 입력하셨습니다!");
+			}
 		} else {
-			System.out.println("잘못 입력하셨습니다!");
+			System.out.println("존재하지 않는 아이디입니다!");
 		}
 	}
 	

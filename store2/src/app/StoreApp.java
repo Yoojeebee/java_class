@@ -23,6 +23,7 @@ public class StoreApp {
 			System.out.print("메뉴선택 > ");
 			int mainMenu = sc.nextInt();
 
+			// 1. 도서
 			if(mainMenu == 1) {
 				System.out.println("[도서관리]");
 				System.out.println("========================================================================");
@@ -137,9 +138,12 @@ public class StoreApp {
 						}
 					}	
 				}  
-				
-				
-			} else if(mainMenu == 2) {
+
+
+			}
+
+			// 2. 주문
+			else if(mainMenu == 2) {
 				System.out.println("[주문관리]");
 				System.out.println("========================================================================");
 				System.out.println("1.주문조회\t2.주문하기 \t 3.취소 \t 4.전체조회");
@@ -191,7 +195,7 @@ public class StoreApp {
 					 // 주문번호를 입력받아서 그 주문을 취소처리한다.
 					 ArrayList<Order> orders = service.getOrderService().getAllOrders();
 					 for(Order order : orders) {
-						 System.out.println("주번호: " + order.getNo() + ", 아이디: " + order.getUserId());
+						 System.out.println("주번호: " + order.getNo() + ", 아이디: " + order.getUserId() + ", 책이름: " + order.getBookName());
 					 }
 
 					 System.out.print("취소시킬 주문번호: ");
@@ -218,7 +222,10 @@ public class StoreApp {
 					 }
 				 }
 				
-			} else if(mainMenu == 3) {
+			}
+
+			// 3. 회원
+			else if(mainMenu == 3) {
 				System.out.println("[회원관리]");
 				System.out.println("========================================================================");
 				System.out.println("1.전체조회\t2.조회 \t\t 3.등록 \t 4.변경 \t 5.탈퇴");
