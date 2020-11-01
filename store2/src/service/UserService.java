@@ -2,20 +2,19 @@ package service;
 
 import java.util.ArrayList;
 
-import repo.UserRepository;
+import repo.Repository;
 import vo.User;
 
-public class UserService {
-	
-	// 사용자의 정보를 저장/관리하는 객체
-	private UserRepository userRepository = new UserRepository();
+public class UserService  {
+
+	private Repository repository = Repository.getInstance();
 
 	/**
 	 * 모든 가입자 정보를 반환한다.
 	 * @return User의 ArrayList 객체
 	 */
 	public ArrayList<User> getUsers() {
-		return userRepository.getAllUsers();
+		return repository.getUserRepository().getAllUsers();
 	}
 	
 	/**
@@ -40,11 +39,11 @@ public class UserService {
 		// 매개변수로 전달받은 User 객체에서 id를 조회한다.
 		String userId = user.getId();
 		// id에 해당하는 사용자정보를 저장소에서 조회한다.
-		User savedUser = userRepository.getUserById(userId);
+		User savedUser = repository.getUserRepository().getUserById(userId);
 		// 저장된 사용자정보가 없으면 
 		if(savedUser == null) {
 			// 저장소에 전달받은 사용자정보를 저장한다.
-			userRepository.insertUser(user);
+			repository.getUserRepository().insertUser(user);
 			// 성공여부를 true로 전달한다.
 			isSuccess = true;
 		}
@@ -59,12 +58,12 @@ public class UserService {
 	 * @return 삭제할 사용자정보가 존재하지 않으면 false를 반환한다.
 	 */
 	public boolean deleteUser(String userId) {
-		User savedUser = userRepository.getUserById(userId);
+		User savedUser = repository.getUserRepository().getUserById(userId);
 		if(savedUser == null) {
 			return false;
 		}
 		// 사용자 정보 삭제
-		userRepository.removeUser(userId);
+		repository.getUserRepository().removeUser(userId);
 		// 사용자의 주문내역 정보 삭제
 		return true;
 	}

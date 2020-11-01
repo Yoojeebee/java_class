@@ -32,8 +32,4 @@ public class OrderRepository {
 		return database;
 	}
 
-	{
-		System.out.println("OrderRepository 생성!");
-	}
-	
 }

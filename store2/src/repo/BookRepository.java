@@ -72,8 +72,4 @@ public class BookRepository {
 		return null;
 	}
 
-	{
-		System.out.println("BookRepository 생성!");
-	}
-
 }

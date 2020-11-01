@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import repo.BookRepository;
+import repo.Repository;
 import vo.Book;
 
 public class BookService {
 	
-	private BookRepository bookRepository = new BookRepository();
 	private Scanner stdIn = new Scanner(System.in);
-	
+	private Repository repository = Repository.getInstance();
+
 	// 전체 책정보를 반환하는 기능
 	/**
 	 * @return
@@ -22,7 +23,7 @@ public class BookService {
 		//   모든 책정보가 저장된 ArrayList<Book> 객체를 반환받을 수 있다.
 		// - 반환받은 ArrayList<Book> 객체를 이 메소드를 호출한 메소드에게
 		//   반환한다
-		return bookRepository.getAllBooks();
+		return repository.getBookRepository().getAllBooks();
 	}
 	
 	
@@ -84,7 +85,7 @@ public class BookService {
 	
 	// 가격으로 책정보를 검색하는 기능
 	/**
-	 * @param 입력받은 최소가격, 최대가격
+	 * @param  입력받은 최소가격, 최대가격
 	 * @return 입력받은 최소,최대 가격을 database에서 찾아 같은 것은 ArrayList 객체로 반환
 	 */
 	public ArrayList<Book> searchBooksByPrice(int minPrice, int maxPrice) {
@@ -114,7 +115,7 @@ public class BookService {
 	 * @param book
 	 */
 	public void insertNewBook(Book book) {
-		bookRepository.insertBook(book); 
+		repository.getBookRepository().insertBook(book);
 	}
 
 	
@@ -171,9 +172,9 @@ public class BookService {
 	 */
 	public void updateBookTitle(int bookNo, String title) {
 		System.out.println("");
-		Book book = bookRepository.getBookByNo(bookNo);
+		Book book = repository.getBookRepository().getBookByNo(bookNo);
 		book.setTitle(title);
-		bookRepository.modifyBook(bookRepository.getBookByNo(book.getNo()));
+		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 	/**
@@ -182,9 +183,9 @@ public class BookService {
 	 * @param name 바뀐 저자이름
 	 */
 	public void updateBookWriter(long bookNo, String name) {
-		Book book = bookRepository.getBookByNo((int)bookNo);
+		Book book = repository.getBookRepository().getBookByNo((int)bookNo);
 		book.setWriter(name);
-		bookRepository.modifyBook(bookRepository.getBookByNo(book.getNo()));
+		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 	/**
@@ -193,9 +194,9 @@ public class BookService {
 	 * @param price 변경된 장르명
 	 */
 	public void updateBookGenre(long bookNo, String genre) {
-		Book book = bookRepository.getBookByNo((int)bookNo);
+		Book book = repository.getBookRepository().getBookByNo((int)bookNo);
 		book.setGenre(genre);
-		bookRepository.modifyBook(bookRepository.getBookByNo(book.getNo()));
+		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 	/**
@@ -204,9 +205,9 @@ public class BookService {
 	 * @param price 변경된 가격
 	 */
 	public void updateBookPrice(long bookNo, int price) {
-		Book book = bookRepository.getBookByNo((int)bookNo);
+		Book book = repository.getBookRepository().getBookByNo((int)bookNo);
 		book.setPrice(price);;
-		bookRepository.modifyBook(bookRepository.getBookByNo(book.getNo()));
+		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 	/**
@@ -215,9 +216,9 @@ public class BookService {
 	 * @param stock 변경된 수량
 	 */
 	public void updateBookStock(long bookNo, int stock) {
-		Book book = bookRepository.getBookByNo((int)bookNo);
+		Book book = repository.getBookRepository().getBookByNo((int)bookNo);
 		book.setStock(stock);
-		bookRepository.modifyBook(bookRepository.getBookByNo(book.getNo()));
+		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 }

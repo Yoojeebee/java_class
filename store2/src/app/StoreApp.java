@@ -1,24 +1,19 @@
 package app;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import service.BookService;
-import service.OrderService;
 import service.Service;
-import service.UserService;
 import vo.Book;
 import vo.Order;
 import vo.User;
 
-public class
-StoreApp {
+public class StoreApp {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		UserService userService = new UserService();
-		BookService bookService = new BookService();
-		OrderService orderService = new OrderService();
+		Service service = Service.getInstance();
 
 		while(true) {
 			System.out.println("========================================================");
@@ -39,7 +34,7 @@ StoreApp {
 				int bookMenu = sc.nextInt();
 				
 				if(bookMenu == 1) {
-					ArrayList<Book> books = bookService.getBooks();
+					ArrayList<Book> books = service.getBookService().getBooks();
 					System.out.println("[전체 도서 조회]");
 					if(!books.isEmpty()) {
 						System.out.println("--------------------------------------------------------");
@@ -63,11 +58,11 @@ StoreApp {
 					
 					ArrayList<Book> searchBooks = new ArrayList<Book>();
 					if(search[0].equals("t")) {
-						searchBooks = bookService.searchBooksByTitle(search[1]);
+						searchBooks = service.getBookService().searchBooksByTitle(search[1]);
 					} else if(search[0].equals("w")) {
-						searchBooks = bookService.searchBooksByWriter(search[1]);
+						searchBooks = service.getBookService().searchBooksByWriter(search[1]);
 					} else if(search[0].equals("p")) {
-						searchBooks = bookService.searchBooksByPrice(Integer.parseInt(search[1]), Integer.parseInt(search[2]));
+						searchBooks = service.getBookService().searchBooksByPrice(Integer.parseInt(search[1]), Integer.parseInt(search[2]));
 					} else {
 						System.out.println("잘못 입력하셨습니다!");
 					}
@@ -104,8 +99,8 @@ StoreApp {
 					int bookPrice = sc.nextInt();
 					
 					Book book = new Book(bookName, bookWriter, bookGenre, bookPrice);
-					
-					bookService.insertNewBook(book);
+
+					service.getBookService().insertNewBook(book);
 					System.out.println("##### 신규 책 등록이 완료되었습니다.");
 					
 				} else if(bookMenu == 4) {
@@ -113,7 +108,7 @@ StoreApp {
 					System.out.println("책 제목과 작가를 입력하세요(제목,작가): ");
 					String[] search = sc.next().split(",");
 					
-					ArrayList<Book> books = bookService.getBooks();
+					ArrayList<Book> books = service.getBookService().getBooks();
 					for(Book book : books) {
 						if(book.getTitle().equals(search[0]) && book.getWriter().equals(search[1])) {
 							System.out.println("##### 변경 전");
@@ -124,7 +119,7 @@ StoreApp {
 							System.out.println("가    격: " + book.getPrice());
 							System.out.println("수    량: " + book.getStock());
 							System.out.println();
-							if(bookService.updateBook(book)) {
+							if(service.getBookService().updateBook(book)) {
 								System.out.println("##### 변경후");
 								System.out.println("책 번 호: " + book.getNo());
 								System.out.println("책 이 름: " + book.getTitle());
@@ -159,19 +154,28 @@ StoreApp {
 					 // 사용자아이디를 입력받아서 그 사용자가 주문한 내역을 출력한다.
 					 System.out.print("사용자아이디 입력 > ");
 					 String userId = sc.next();
-					 ArrayList<Order> order = orderService.getOrdersByUserId(userId);
-					 for(Order searchId : order) {
-						 System.out.println(searchId.getNo());
-						 System.out.println(searchId.getUserId());
-						 System.out.println(searchId.getUserName());
-						 System.out.println(searchId.getBookNo());
-						 System.out.println(searchId.getBookName());
-						 System.out.println(searchId.getOrderPrice());
-						 System.out.println(searchId.getOrderAmount());
+					 ArrayList<Order> orders = service.getOrderService().getOrdersByUserId(userId);
+					 for(Order order : orders) {
+						 System.out.println("--------------------------------------------------------");
+						 System.out.println("no: " + order.getNo());
+						 System.out.println("아이디: " + order.getUserId());
+						 System.out.println("이름: " + order.getUserName());
+						 System.out.println("책번호: " + order.getBookNo());
+						 System.out.println("책이름: " + order.getBookName());
+						 System.out.println("주문가격: " + order.getOrderPrice());
+						 System.out.println("주문수: " + order.getOrderAmount());
+						 if(order.isCanceled()) {
+							 System.out.println("주문이 취소된 상품입니다!");
+						 }
 					 }
 				 } else if (orderMenu == 2) {
 					 System.out.println("[주문하기]");
 					 // 상품번호, 사용자아이디, 주문수량을 입력받아서 상품을 주문한다.
+					 ArrayList<Book> books = service.getBookService().getBooks();
+					 for(Book book : books) {
+						 System.out.println("상품번호: " + book.getNo());
+						 System.out.println("상품 이름: " + book.getTitle());
+					 }
 					 System.out.print("상품번호 입력 > ");
 					 long bookNo = sc.nextLong();
 					 
@@ -180,15 +184,38 @@ StoreApp {
 					 
 					 System.out.print("주문수량 입력 > ");
 					 int amount = sc.nextInt();
-					 
-					 orderService.addNewOrder(userId, bookNo, amount);
+
+					 service.getOrderService().addNewOrder(userId, bookNo, amount);
 				 } else if (orderMenu == 3) {
 					 System.out.println("[주문 취소하기]");
 					 // 주문번호를 입력받아서 그 주문을 취소처리한다.
-					 
+					 ArrayList<Order> orders = service.getOrderService().getAllOrders();
+					 for(Order order : orders) {
+						 System.out.println("주번호: " + order.getNo() + ", 아이디: " + order.getUserId());
+					 }
+
+					 System.out.print("취소시킬 주문번호: ");
+					 int orderNo = sc.nextInt();
+					 service.getOrderService().canceledOrder(orderNo);
+
+
 				 } else if (orderMenu == 4) {
 					 System.out.println("[전체 주문 조회]");
 					 // 모든 주문정보를 출력한다.
+					 ArrayList<Order> orders = service.getOrderService().getAllOrders();
+					 for(Order order : orders) {
+						 System.out.println("--------------------------------------------------------");
+						 System.out.println("no: " + order.getNo());
+						 System.out.println("아이디: " + order.getUserId());
+						 System.out.println("이름: " + order.getUserName());
+						 System.out.println("책번호: " + order.getBookNo());
+						 System.out.println("책이름: " + order.getBookName());
+						 System.out.println("주문가격: " + order.getOrderPrice());
+						 System.out.println("주문수: " + order.getOrderAmount());
+						 if(order.isCanceled()) {
+							 System.out.println("주문이 취소된 상품입니다!");
+						 }
+					 }
 				 }
 				
 			} else if(mainMenu == 3) {
@@ -203,7 +230,7 @@ StoreApp {
 				
 				if(userMenu == 1) {
 					System.out.println("[전체 회원 조회]");
-					ArrayList<User> users = userService.getUsers();
+					ArrayList<User> users = service.getUserService().getUsers();
 					if(!users.isEmpty()) {
 						System.out.println("--------------------------------------------------------");
 						for(User user : users) {
@@ -240,7 +267,7 @@ StoreApp {
 					user.setPassword(password);
 					
 					// 3. UserService객체의 insertNewUser(User user)를 실행하고, User 객체를 인자로 전달
-					boolean result = userService.insertNewUser(user);
+					boolean result = service.getUserService().insertNewUser(user);
 					// 4. insertNewUser객체의 insertNewUser(User user)를 실행하고, 
 					if(result) {
 						System.out.println("##### 신규회원가입이 완료되었습니다.");
@@ -258,7 +285,7 @@ StoreApp {
 					System.out.print("아이디 입력 > ");
 					String userId = sc.next();
 					
-					boolean isSuccess = userService.deleteUser(userId);
+					boolean isSuccess = service.getUserService().deleteUser(userId);
 					if(isSuccess) {
 						System.out.println("##### 탈퇴처리 되었습니다.");
 					} else {
