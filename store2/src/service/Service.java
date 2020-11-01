@@ -1,7 +1,5 @@
 package service;
 
-import repo.Repository;
-
 public class Service {
 
     private UserService userService = new UserService();
