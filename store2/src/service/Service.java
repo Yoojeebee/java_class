@@ -5,7 +5,6 @@ public class Service {
     private static UserService userService;
     private static BookService bookService;
     private static OrderService orderService;
-
     private Service(){}
     private static Service service;
     public static Service getInstance() {
