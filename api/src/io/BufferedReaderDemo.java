@@ -57,6 +57,7 @@ public class BufferedReaderDemo {
 		
 		fr.close();
 		fr2.close();
+		fr3.close();
 		reader.close();
 		reader2.close();
 	}

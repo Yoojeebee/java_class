@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 import vo.Order;
 
-public class OrderRepository {
+public class OrderRepository extends Repository {
 
 	private ArrayList<Order> database = new ArrayList<>();
 	
 	public OrderRepository() {
+		super();
 		database.add(new Order("hong", "홍길동", 10000, "이것이자바다", 35000, 1));
 		database.add(new Order("lee", "이순신", 10003, "핸즈온머신러닝", 55000, 1));
 		database.add(new Order("kang", "강감찬", 10004, "혼자공부하는자바", 21000, 2));

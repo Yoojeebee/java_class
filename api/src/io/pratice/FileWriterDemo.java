@@ -26,5 +26,13 @@ public class FileWriterDemo {
         writer2.append("안녕하세요2!");
 
         writer2.close();
+
+        // FileWriter 생성자 두 번째 인작밧에 true를 주면 기존의 내용 파일에 데이터를 추가한다(print 형식)
+        FileWriter writer3 = new FileWriter(pathName, true);
+
+        writer3.append("추가된 글1");
+        writer3.append("추가된 글2");
+
+        writer3.close();
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import vo.Book;
 
-public class BookRepository {
+public class BookRepository extends Repository {
 	/*************/
 	/* 멤버 변수 */
 	private ArrayList<Book> database = new ArrayList<>();
@@ -12,6 +12,7 @@ public class BookRepository {
 	/**************/
 	/*** 생성자 ***/
 	public BookRepository() {
+		super();
 		database.add(new Book("이것이자바다", "신용권", "기술", 35000));
 		database.add(new Book("혼자공부하는파이썬", "윤인성", "기술", 18000));
 		database.add(new Book("코딩테스트준비하기", "나동빈", "기술", 30000));

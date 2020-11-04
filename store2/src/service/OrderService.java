@@ -2,17 +2,19 @@ package service;
 
 import java.util.ArrayList;
 
-import repo.BookRepository;
-import repo.OrderRepository;
 import repo.Repository;
-import repo.UserRepository;
 import vo.Book;
 import vo.Order;
 import vo.User;
 
-public class OrderService {
+public class OrderService extends Service {
 
-	private Repository repository = Repository.getInstance();
+	private Repository repository = super.getRepository();
+	private BookService bookService = super.getBookService();
+
+	public OrderService() {
+		super();
+	}
 
 	/**
 	 * 지정된 사용자의 모든 주문내역을 반환한다.
@@ -67,7 +69,7 @@ public class OrderService {
 				int orderPrice = book.getPrice();
 				int orderAmount = book.getStock();
 				Order order = new Order(userId, userName, bookNo, bookName, orderPrice, orderAmount);
-				Service.getInstance().getBookService().updateBookStock(bookNo, book.getStock() - amount);
+				bookService.updateBookStock(bookNo, book.getStock() - amount);
 			} else {
 				System.out.println("잘못 입력하셨습니다!");
 			}
@@ -88,7 +90,7 @@ public class OrderService {
 			if(order.getNo() == orderNo) {
 				order.setCanceled(true);
 				Book book = repository.getBookRepository().getBookByNo(order.getBookNo());
-				Service.getInstance().getBookService().updateBookStock(book.getNo(), book.getStock() + order.getOrderAmount());
+				bookService.updateBookStock(book.getNo(), book.getStock() + order.getOrderAmount());
 			}
 		}
 	}

@@ -5,12 +5,13 @@ import java.util.Iterator;
 
 import vo.User;
 
-public class UserRepository {
+public class UserRepository extends Repository {
 	/*************/
 	/* 멤버 변수 */
 	private ArrayList<User> database = new ArrayList<User>();
 	
 	public UserRepository() {
+		super();
 		database.add(new User("hong", "홍길동", "hong@gmail.com", 1234));
 		database.add(new User("lee", "이순신", "leee@gmail.com", 1234));
 		database.add(new User("kim", "김유신", "yushin@gmail.com", 1234));

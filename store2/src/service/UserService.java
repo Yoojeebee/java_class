@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import repo.Repository;
 import vo.User;
 
-public class UserService  {
+public class UserService extends Service {
 
-	private Repository repository = Repository.getInstance();
+	private Repository repository = super.getRepository();
 
 	/**
 	 * 모든 가입자 정보를 반환한다.
@@ -16,7 +16,11 @@ public class UserService  {
 	public ArrayList<User> getUsers() {
 		return repository.getUserRepository().getAllUsers();
 	}
-	
+
+	public UserService() {
+		super();
+	}
+
 	/**
 	 * 신규 사용자를 등록한다.<br/>
 	 * 동일한 아이디를 가진 사용자가 있는 경우 등록되지 않는다.
@@ -67,4 +71,5 @@ public class UserService  {
 		// 사용자의 주문내역 정보 삭제
 		return true;
 	}
+
 }

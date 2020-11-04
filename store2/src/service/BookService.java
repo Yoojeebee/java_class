@@ -3,14 +3,17 @@ package service;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import repo.BookRepository;
 import repo.Repository;
 import vo.Book;
 
-public class BookService {
+public class BookService extends Service {
 	
 	private Scanner stdIn = new Scanner(System.in);
-	private Repository repository = Repository.getInstance();
+	private Repository repository = super.getRepository();
+
+	public BookService() {
+		super();
+	}
 
 	// 전체 책정보를 반환하는 기능
 	/**

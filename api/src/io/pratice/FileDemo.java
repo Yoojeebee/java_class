@@ -11,11 +11,11 @@ public class FileDemo {
         String fileName = file.getName();
         System.out.println("파일명: " + fileName);
 
-        // 현재 파일의 위치를 반환
+        // 파일이 저장되어 있는 디렉토리명을 반환한다
         String path = file.getPath();
         System.out.println("디렉토리 위치: " + path);
 
-        // 위의 메서드와 같은 내용을 반환
+        // 파일명의 절대경로(c:/ 로부터 시작하는 경로)와 파일명을 반환한다
         String pathAneName = file.getAbsolutePath();
         System.out.println("전체경로 및 이름: " + pathAneName);
 

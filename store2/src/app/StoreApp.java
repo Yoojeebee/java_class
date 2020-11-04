@@ -1,19 +1,21 @@
 package app;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import service.BookService;
+import service.OrderService;
 import service.Service;
+import service.UserService;
 import vo.Book;
 import vo.Order;
 import vo.User;
 
 public class StoreApp {
-	
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		Service service = Service.getInstance();
+		Service service = new Service(new UserService(), new BookService(), new OrderService());
 
 		while(true) {
 			System.out.println("========================================================");
@@ -195,13 +197,12 @@ public class StoreApp {
 					 // 주문번호를 입력받아서 그 주문을 취소처리한다.
 					 ArrayList<Order> orders = service.getOrderService().getAllOrders();
 					 for(Order order : orders) {
-						 System.out.println("주번호: " + order.getNo() + ", 아이디: " + order.getUserId() + ", 책이름: " + order.getBookName());
+						 System.out.println("주문번호: " + order.getNo() + ", 아이디: " + order.getUserId() + ", 책이름: " + order.getBookName());
 					 }
 
 					 System.out.print("취소시킬 주문번호: ");
 					 int orderNo = sc.nextInt();
 					 service.getOrderService().canceledOrder(orderNo);
-
 
 				 } else if (orderMenu == 4) {
 					 System.out.println("[전체 주문 조회]");
