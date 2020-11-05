@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="service.Service" project="store2" file="/store2/src/service/Service.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="284" y="405"/>    
+    <position height="-1" width="-1" x="808" y="418"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="repo.Repository" project="store2" file="/store2/src/repo/Repository.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="643" y="319"/>    
+    <position height="-1" width="-1" x="1370" y="407"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="repo.BookRepository" project="store2" file="/store2/src/repo/BookRepository.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="651" y="95"/>    
+    <position height="-1" width="-1" x="1175" y="132"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="repo.OrderRepository" project="store2" 
     file="/store2/src/repo/OrderRepository.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="923" y="317"/>    
+    <position height="-1" width="-1" x="1605" y="150"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="repo.UserRepository" project="store2" file="/store2/src/repo/UserRepository.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="927" y="549"/>    
+    <position height="-1" width="-1" x="1388" y="122"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="service.BookService" project="store2" file="/store2/src/service/BookService.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="288" y="126"/>    
+    <position height="-1" width="-1" x="799" y="723"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="service.OrderService" project="store2" 
     file="/store2/src/service/OrderService.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="285" y="602"/>    
+    <position height="-1" width="-1" x="1066" y="657"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="service.UserService" project="store2" file="/store2/src/service/UserService.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="171" x="-53" y="328"/>    
+    <position height="-1" width="-1" x="538" y="647"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,129 +75,133 @@
   </class>  
   <class id="9" language="java" name="app.StoreApp" project="store2" file="/store2/src/app/StoreApp.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="547" y="522"/>    
+    <position height="-1" width="-1" x="236" y="284"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="10">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <generalization id="11">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <association id="12">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="13" name="bookRepository">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <association id="10">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="11" name="bookService">        
+        <position height="0" width="0" x="511" y="597"/>      
       </attribute>      
-      <multiplicity id="14" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="12" minimum="0" maximum="1">        
+        <position height="0" width="0" x="511" y="597"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
+    <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="15">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="16" name="service"/>      
-      <multiplicity id="17" minimum="0" maximum="1"/>    
+  <association id="13">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="14" name="orderService">        
+        <position height="0" width="0" x="781" y="55"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="1">        
+        <position height="0" width="0" x="781" y="55"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
+  <association id="16">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="17" name="repository">        
+        <position height="0" width="0" x="727" y="88"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="1">        
+        <position height="0" width="0" x="727" y="88"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="19">    
     <end type="SOURCE" refId="2" navigable="false">      
       <attribute id="20" name="orderRepository">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="682" y="-167"/>      
       </attribute>      
       <multiplicity id="21" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="682" y="-167"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="22">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="23" name="userRepository">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="23" name="service">        
+        <position height="0" width="0" x="524" y="13"/>      
       </attribute>      
       <multiplicity id="24" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="524" y="13"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="25">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <association id="26">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="27" name="userRepository">        
+        <position height="0" width="0" x="461" y="-427"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="461" y="-427"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="25">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="26" name="orderService">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="27" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="28">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
   </generalization>  
-  <association id="29">    
+  <association id="30">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="30" name="userService">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <attribute id="31" name="userService">        
+        <position height="0" width="0" x="506" y="252"/>      
       </attribute>      
-      <multiplicity id="31" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="32" minimum="0" maximum="1">        
+        <position height="0" width="0" x="506" y="252"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="33" name="bookService">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="36" name="repository">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="37" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="38">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <generalization id="39">    
+  <generalization id="33">    
     <end type="SOURCE" refId="8"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="37">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="38" name="bookRepository">        
+        <position height="0" width="0" x="524" y="37"/>      
+      </attribute>      
+      <multiplicity id="39" minimum="0" maximum="1">        
+        <position height="0" width="0" x="524" y="37"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
