@@ -13,11 +13,9 @@ import vo.User;
 
 public class StoreApp {
 	
-	private static Service service = null;
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		service = new Service(new UserService(), new BookService(), new OrderService());
+		Service service = new Service(new UserService(), new BookService(), new OrderService());
 
 		while(true) {
 			System.out.println("========================================================");

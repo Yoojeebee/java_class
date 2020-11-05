@@ -1,1 +1,1 @@
-![diagram] (./diagram.png)
+![diagram] (./diagram.png "다이어그램")

@@ -7,7 +7,9 @@ import vo.Order;
 import vo.User;
 
 public class OrderService extends Service {
-
+	
+	private BookService bookService = getBookService();
+	
 	public OrderService() {
 		super();
 	}
@@ -50,7 +52,7 @@ public class OrderService extends Service {
 		//    책의 재고량을 변경한다.
 		// 5. OrderRepository의 insertOrder(Order) 메소드를 호출해서
 		//    3번에서 생성한 Order 객체를 저장한다.
-
+		System.out.println("addNewOrder");
 		String userName = null;
 		ArrayList<User> users = super.getRepository().getUserRepository().getAllUsers();
 		for(User user : users) {
@@ -61,11 +63,14 @@ public class OrderService extends Service {
 		if(userName != null) {
 			Book book = super.getRepository().getBookRepository().getBookByNo(bookNo);
 			if (book != null) {
-				String bookName = book.getTitle();
-				int orderPrice = book.getPrice();
-				int orderAmount = book.getStock();
-				Order order = new Order(userId, userName, bookNo, bookName, orderPrice, orderAmount);
-				super.getBookService().updateBookStock(bookNo, book.getStock() - amount);
+				System.out.println("이름: " + userName);
+				System.out.println("책이름: " + book.getTitle());
+				System.out.println("주문수량: " + book.getStock());
+				Order order = new Order(userId, userName, book.getNo(), book.getTitle(), book.getPrice(), amount);
+				super.getRepository().getOrderRepository().insertOrder(order);
+				BookService bookService = super.getBookService();
+				bookService.toString();
+//				super.getBookService().updateBookStock(book.getNo(), (book.getStock() - amount));
 			} else {
 				System.out.println("잘못 입력하셨습니다!");
 			}

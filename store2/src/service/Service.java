@@ -11,7 +11,7 @@ public class Service {
     private BookService bookService;
     private OrderService orderService;
 
-    private static Repository repository ;
+    private static Repository repository;
     /*
     private Service(){}
     private static Service service;
@@ -36,10 +36,6 @@ public class Service {
         repository = new Repository(new BookRepository(), new UserRepository(), new OrderRepository());
     }
 
-    public Repository getRepository() {
-        return repository;
-    }
-
     public UserService getUserService() {
         return userService;
     }
@@ -50,6 +46,10 @@ public class Service {
 
     public OrderService getOrderService() {
         return orderService;
+    }
+    
+    public Repository getRepository() {
+        return repository;
     }
 
 }

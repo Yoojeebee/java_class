@@ -217,7 +217,7 @@ public class BookService extends Service {
 	 * @param stock 변경된 수량
 	 */
 	public void updateBookStock(long bookNo, int stock) {
-		Book book = super.getRepository().getBookRepository().getBookByNo((int)bookNo);
+		Book book = super.getRepository().getBookRepository().getBookByNo(bookNo);
 		book.setStock(stock);
 		super.getRepository().getBookRepository().modifyBook(super.getRepository().getBookRepository().getBookByNo(book.getNo()));
 	}
