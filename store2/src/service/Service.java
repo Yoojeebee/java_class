@@ -1,6 +1,9 @@
 package service;
 
+import repo.BookRepository;
+import repo.OrderRepository;
 import repo.Repository;
+import repo.UserRepository;
 
 public class Service {
 
@@ -8,7 +11,7 @@ public class Service {
     private BookService bookService;
     private OrderService orderService;
 
-    private Repository repository ;
+    private static Repository repository ;
     /*
     private Service(){}
     private static Service service;
@@ -30,7 +33,7 @@ public class Service {
         this.userService = userService;
         this.bookService = bookService;
         this.orderService = orderService;
-        this.repository = new Repository();
+        repository = new Repository(new BookRepository(), new UserRepository(), new OrderRepository());
     }
 
     public Repository getRepository() {

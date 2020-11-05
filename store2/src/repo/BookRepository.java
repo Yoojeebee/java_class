@@ -7,7 +7,7 @@ import vo.Book;
 public class BookRepository extends Repository {
 	/*************/
 	/* 멤버 변수 */
-	private ArrayList<Book> database = new ArrayList<>();
+	private static ArrayList<Book> database = new ArrayList<>();
 	
 	/**************/
 	/*** 생성자 ***/
@@ -24,6 +24,7 @@ public class BookRepository extends Repository {
 		database.add(new Book("모던자바스크립트", "이웅모", "기술", 45000));
 		database.add(new Book("모두의데이터분석", "송석리", "기술", 18000));
 		database.add(new Book("자바의정석", "남궁성", "기술", 25000));
+		System.out.println("북 레파지토리 생성!");
 	}
 	
 	/**************/

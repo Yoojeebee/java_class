@@ -3,13 +3,11 @@ package service;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import repo.Repository;
 import vo.Book;
 
 public class BookService extends Service {
 	
 	private Scanner stdIn = new Scanner(System.in);
-	private Repository repository = super.getRepository();
 
 	public BookService() {
 		super();
@@ -26,7 +24,7 @@ public class BookService extends Service {
 		//   모든 책정보가 저장된 ArrayList<Book> 객체를 반환받을 수 있다.
 		// - 반환받은 ArrayList<Book> 객체를 이 메소드를 호출한 메소드에게
 		//   반환한다
-		return repository.getBookRepository().getAllBooks();
+		return super.getRepository().getBookRepository().getAllBooks();
 	}
 	
 	
@@ -118,7 +116,7 @@ public class BookService extends Service {
 	 * @param book
 	 */
 	public void insertNewBook(Book book) {
-		repository.getBookRepository().insertBook(book);
+		super.getRepository().getBookRepository().insertBook(book);
 	}
 
 	
@@ -175,9 +173,9 @@ public class BookService extends Service {
 	 */
 	public void updateBookTitle(int bookNo, String title) {
 		System.out.println("");
-		Book book = repository.getBookRepository().getBookByNo(bookNo);
+		Book book = super.getRepository().getBookRepository().getBookByNo(bookNo);
 		book.setTitle(title);
-		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
+		super.getRepository().getBookRepository().modifyBook(super.getRepository().getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 	/**
@@ -186,9 +184,9 @@ public class BookService extends Service {
 	 * @param name 바뀐 저자이름
 	 */
 	public void updateBookWriter(long bookNo, String name) {
-		Book book = repository.getBookRepository().getBookByNo((int)bookNo);
+		Book book = super.getRepository().getBookRepository().getBookByNo((int)bookNo);
 		book.setWriter(name);
-		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
+		super.getRepository().getBookRepository().modifyBook(super.getRepository().getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 	/**
@@ -197,9 +195,9 @@ public class BookService extends Service {
 	 * @param price 변경된 장르명
 	 */
 	public void updateBookGenre(long bookNo, String genre) {
-		Book book = repository.getBookRepository().getBookByNo((int)bookNo);
+		Book book = super.getRepository().getBookRepository().getBookByNo((int)bookNo);
 		book.setGenre(genre);
-		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
+		super.getRepository().getBookRepository().modifyBook(super.getRepository().getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 	/**
@@ -208,9 +206,9 @@ public class BookService extends Service {
 	 * @param price 변경된 가격
 	 */
 	public void updateBookPrice(long bookNo, int price) {
-		Book book = repository.getBookRepository().getBookByNo((int)bookNo);
+		Book book = super.getRepository().getBookRepository().getBookByNo((int)bookNo);
 		book.setPrice(price);;
-		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
+		super.getRepository().getBookRepository().modifyBook(super.getRepository().getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 	/**
@@ -219,9 +217,9 @@ public class BookService extends Service {
 	 * @param stock 변경된 수량
 	 */
 	public void updateBookStock(long bookNo, int stock) {
-		Book book = repository.getBookRepository().getBookByNo((int)bookNo);
+		Book book = super.getRepository().getBookRepository().getBookByNo((int)bookNo);
 		book.setStock(stock);
-		repository.getBookRepository().modifyBook(repository.getBookRepository().getBookByNo(book.getNo()));
+		super.getRepository().getBookRepository().modifyBook(super.getRepository().getBookRepository().getBookByNo(book.getNo()));
 	}
 	
 }

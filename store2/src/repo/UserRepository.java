@@ -8,7 +8,7 @@ import vo.User;
 public class UserRepository extends Repository {
 	/*************/
 	/* 멤버 변수 */
-	private ArrayList<User> database = new ArrayList<User>();
+	private static ArrayList<User> database = new ArrayList<User>();
 	
 	public UserRepository() {
 		super();
@@ -18,6 +18,7 @@ public class UserRepository extends Repository {
 		database.add(new User("kang", "강감찬", "kanggc@gmail.com", 1234));
 		database.add(new User("ahn", "안중근", "ahn@gmail.com", 1234));
 		database.add(new User("ryu", "유관순", "ryou@gmail.com", 1234));
+		System.out.println("유저 레파지토리 생성!");
 	}
 	
 	/**************/

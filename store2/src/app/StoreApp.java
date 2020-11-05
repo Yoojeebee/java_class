@@ -12,10 +12,12 @@ import vo.Order;
 import vo.User;
 
 public class StoreApp {
+	
+	private static Service service = null;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		Service service = new Service(new UserService(), new BookService(), new OrderService());
+		service = new Service(new UserService(), new BookService(), new OrderService());
 
 		while(true) {
 			System.out.println("========================================================");

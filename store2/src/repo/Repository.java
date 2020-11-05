@@ -42,8 +42,4 @@ public class Repository {
         return orderRepository;
     }
 
-    {
-        System.out.println("Repository 클래스 생성!");
-    }
-
 }

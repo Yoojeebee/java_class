@@ -2,15 +2,11 @@ package service;
 
 import java.util.ArrayList;
 
-import repo.Repository;
 import vo.Book;
 import vo.Order;
 import vo.User;
 
 public class OrderService extends Service {
-
-	private Repository repository = super.getRepository();
-	private BookService bookService = super.getBookService();
 
 	public OrderService() {
 		super();
@@ -56,20 +52,20 @@ public class OrderService extends Service {
 		//    3번에서 생성한 Order 객체를 저장한다.
 
 		String userName = null;
-		ArrayList<User> users = repository.getUserRepository().getAllUsers();
+		ArrayList<User> users = super.getRepository().getUserRepository().getAllUsers();
 		for(User user : users) {
 			if(userId.equals(user.getId())) {
 				userName = userId;
 			}
 		}
 		if(userName != null) {
-			Book book = repository.getBookRepository().getBookByNo(bookNo);
+			Book book = super.getRepository().getBookRepository().getBookByNo(bookNo);
 			if (book != null) {
 				String bookName = book.getTitle();
 				int orderPrice = book.getPrice();
 				int orderAmount = book.getStock();
 				Order order = new Order(userId, userName, bookNo, bookName, orderPrice, orderAmount);
-				bookService.updateBookStock(bookNo, book.getStock() - amount);
+				super.getBookService().updateBookStock(bookNo, book.getStock() - amount);
 			} else {
 				System.out.println("잘못 입력하셨습니다!");
 			}
@@ -85,12 +81,12 @@ public class OrderService extends Service {
 	public void canceledOrder(int orderNo) {
 		// 1. OrderRepository객체의 getAllOrders()를 호출해서 모든 주문정보를 조회한다.
 		// 2. 향상된 for문으로 주문정보를 순회하면서 주문번호가 일치하는 주문정보의 canceled값을 true를 설정한다.
-		ArrayList<Order> orders = repository.getOrderRepository().getAllOrders();
+		ArrayList<Order> orders = super.getRepository().getOrderRepository().getAllOrders();
 		for(Order order : orders) {
 			if(order.getNo() == orderNo) {
 				order.setCanceled(true);
-				Book book = repository.getBookRepository().getBookByNo(order.getBookNo());
-				bookService.updateBookStock(book.getNo(), book.getStock() + order.getOrderAmount());
+				Book book = super.getRepository().getBookRepository().getBookByNo(order.getBookNo());
+				super.getBookService().updateBookStock(book.getNo(), book.getStock() + order.getOrderAmount());
 			}
 		}
 	}
@@ -100,6 +96,6 @@ public class OrderService extends Service {
 	 * @return 모든 주문정보가 저장된 ArrayList객체
 	 */
 	public ArrayList<Order> getAllOrders() {
-		return repository.getOrderRepository().getAllOrders();
+		return super.getRepository().getOrderRepository().getAllOrders();
 	}
 }
